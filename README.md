@@ -18,22 +18,20 @@ Make PostgreSQL accessible on port 5432.
 
 
 2. **Access the Containers**
-    Access the Containers
-    After running the docker-compose up command, you can access the etl-container as follows:
+After running the docker-compose up command, you can access the etl-container as follows:
     ```bash
     docker exec -it etl-app bash
 
-
 3. **Generate data**
-    Using the following command generate a dataset:
+Using the following command generate a dataset:
         ```bash
         python3 generate.py
 
-    You will be given an option to choose the quantity and level of corruption or leave default values
+You will be given an option to choose the quantity and level of corruption or leave default values
 
 
 4. **Create table**
-    Using the following command connect to the psql:
+Using the following command connect to the psql:
     ```bash
     psql -h $DB_HOST -U $DB_USER -d $DB_NAME
 
