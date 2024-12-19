@@ -4,13 +4,13 @@ This setup uses Docker Compose to run an ETL application with a PostgreSQL datab
 
 ## Steps to Build and Run the Services
 
-1. **###Build and start services:**
+1. **Build and start services:**
 Open a terminal and run the following command to build and start the services
 
     ```bash
     docker-compose up --build
     ```
-    #### This command will:
+    ### This command will:
     - Build the `etl-app` container.
     - Start the `postgres` container.
     - Set up the network and volume for the PostgreSQL database.
@@ -19,7 +19,7 @@ Open a terminal and run the following command to build and start the services
 
 
 2. **Access the Containers:**
-After running the `docker-compose up` command, you can access the `etl-app` container as follows:
+After running the `docker-compose up` command, you can access the `etl-app` container as follows
 
     ```bash
     docker exec -it etl-app bash
