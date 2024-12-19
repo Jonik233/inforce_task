@@ -24,10 +24,10 @@ After running the docker-compose up command, you can access the etl-container as
 
 3. **Generate data**
 Using the following command generate a dataset:
-        ```bash
-        python3 generate.py
+    ```bash
+    python3 generate.py
 
-You will be given an option to choose the quantity and level of corruption or leave default values
+    You will be given an option to choose the quantity and level of corruption or leave default values
 
 
 4. **Create table**
@@ -35,11 +35,11 @@ Using the following command connect to the psql:
     ```bash
     psql -h $DB_HOST -U $DB_USER -d $DB_NAME
 
-Then enter password: mypassword
+    Then enter password: mypassword
 
-Run the following sql script to create a table:
-        ```bash
-        \i scripts_sql/create_table.sql
+    Run the following sql script to create a table:
+    ```bash
+    \i scripts_sql/create_table.sql
 
 
 5. **Run pyspark script**
@@ -48,5 +48,5 @@ Run the following sql script to create a table:
     ```bash
     spark-submit main.py
 
-After running it, transformed data will be loaded into the database.
-To run other sql scripts - connect to the database and experiment with data
+    After running it, transformed data will be loaded into the database.
+    To run other sql scripts - connect to the database and experiment with data
