@@ -58,6 +58,7 @@ if __name__ == '__main__':
             print("DATA_PATH is not set in the .env file. Saving to 'output.csv' instead.")
             data_path = "output.csv"
 
+        os.mkdir("data")
         df.to_csv(data_path, index=False)
         print(f"Data successfully saved to {data_path}")
 
