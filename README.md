@@ -4,13 +4,13 @@ This setup uses Docker Compose to run an ETL application with a PostgreSQL datab
 
 ## Steps to Build and Run the Services
 
-1. **Build and start services:**
+### 1. **Build and start services:**
 Open a terminal and run the following command to build and start the services
 
     ```bash
     docker-compose up --build
     ```
-    ### This command will:
+    #### This command will:
     - Build the `etl-app` container.
     - Start the `postgres` container.
     - Set up the network and volume for the PostgreSQL database.
@@ -18,14 +18,14 @@ Open a terminal and run the following command to build and start the services
     - Make PostgreSQL accessible on port `5432`.
 
 
-2. **Access the Containers:**
+### 2. **Access the Containers:**
 After running the `docker-compose up` command, you can access the `etl-app` container as follows
 
     ```bash
     docker exec -it etl-app bash
     ```
 
-3. **Generate data:**
+### 3. **Generate data:**
 Using the following command generate a dataset
     ```bash
     python3 generate.py
@@ -33,7 +33,7 @@ Using the following command generate a dataset
     You will be given an option to choose the quantity and level of corruption or leave as default values
 
 
-4. **Create table:**
+### 4. **Create table:**
 Connect to the PostgreSQL database using the psql command-line tool
     ```bash
     psql -h $DB_HOST -U $DB_USER -d $DB_NAME
@@ -45,7 +45,7 @@ Connect to the PostgreSQL database using the psql command-line tool
     \i scripts_sql/create_table.sql
     ```
 
-5. **Run pyspark script:**
+### 5. **Run pyspark script:**
     Quit the database using \q.
     Using the following command run the spark script
     ```bash
