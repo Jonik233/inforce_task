@@ -9,14 +9,12 @@ This setup uses Docker Compose to run an ETL application with a PostgreSQL datab
     ```bash
     docker-compose up --build
 
-
-    This will:
-
-    Build the etl-app container.
-    Start the postgres container.
-    Set up the network and volume for the PostgreSQL database.
-    Link the etl-app container to the postgres container.
-    Make PostgreSQL accessible on port 5432.
+This will:
+Build the etl-app container.
+Start the postgres container.
+Set up the network and volume for the PostgreSQL database.
+Link the etl-app container to the postgres container.
+Make PostgreSQL accessible on port 5432.
 
 
 2. **Access the Containers**
@@ -36,12 +34,12 @@ This setup uses Docker Compose to run an ETL application with a PostgreSQL datab
 
 4. **Create table**
     Using the following command connect to the psql:
-        ```bash
-        psql -h $DB_HOST -U $DB_USER -d $DB_NAME
+    ```bash
+    psql -h $DB_HOST -U $DB_USER -d $DB_NAME
 
-    Then enter password: mypassword
-    
-    Run the following sql script to create a table:
+Then enter password: mypassword
+
+Run the following sql script to create a table:
         ```bash
         \i scripts_sql/create_table.sql
 
@@ -49,8 +47,8 @@ This setup uses Docker Compose to run an ETL application with a PostgreSQL datab
 5. **Run pyspark script**
     Quit the database using \q
     Using the following command run the spark script:
-        ```bash
-        spark-submit main.py
+    ```bash
+    spark-submit main.py
 
-    After running it, transformed data will be loaded into the database.
-    To run other sql scripts - connect to the database and experiment with data
+After running it, transformed data will be loaded into the database.
+To run other sql scripts - connect to the database and experiment with data
