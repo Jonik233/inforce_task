@@ -10,12 +10,12 @@ Open a terminal and run the following command to build and start the services:
     ```bash
     docker-compose up --build
     ```
-### This command will:
-- Build the `etl-app` container.
-- Start the `postgres` container.
-- Set up the network and volume for the PostgreSQL database.
-- Link the `etl-app` container to the `postgres` container.
-- Make PostgreSQL accessible on port `5432`.
+#####   This command will:
+-       Build the `etl-app` container.
+-       Start the `postgres` container.
+-       Set up the network and volume for the PostgreSQL database.
+-       Link the `etl-app` container to the `postgres` container.
+-       Make PostgreSQL accessible on port `5432`.
 
 
 2. **Access the Containers:**
@@ -30,7 +30,7 @@ Using the following command generate a dataset:
     ```bash
     python3 generate.py
     ```
-    You will be given an option to choose the quantity and level of corruption or leave default values
+    You will be given an option to choose the quantity and level of corruption or leave as default values
 
 
 4. **Create table:**
