@@ -1,0 +1,40 @@
+services:
+  etl-app:
+    build: .
+    container_name: etl-app
+    environment:
+      DB_HOST: postgres
+      DB_PORT: 5432
+      DB_NAME: mydb
+      DB_USER: postgres
+      DB_PASSWORD: mypassword
+    volumes:
+     - .:/app
+    depends_on:
+      - postgres
+    networks:
+      - etl_network
+    stdin_open: true
+    tty: true
+
+  postgres:
+    image: postgres:13
+    container_name: postgres_db
+    environment:
+      POSTGRES_DB: mydb
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: mypassword
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    networks:
+      - etl_network
+    ports:
+      - "5432:5432"
+
+networks:
+  etl_network:
+    driver: bridge
+
+volumes:
+  postgres_data:
+    driver: local
