@@ -42,8 +42,9 @@ Then enter password: mypassword
 
 Run the following sql script to create a table:
 ```bash
-\i scripts_sql/create_table.sql
+\i sql_scripts/create_table.sql
 ```
+
 
 ### 5. **Run pyspark script:**
 Quit the database using \q.
