@@ -10,7 +10,7 @@ Open a terminal and run the following command to build and start the services:
     ```bash
     docker-compose up --build
     ```
-    ##### This command will:
+    #### This command will:
     - Build the `etl-app` container.
     - Start the `postgres` container.
     - Set up the network and volume for the PostgreSQL database.
@@ -26,7 +26,7 @@ After running the `docker-compose up` command, you can access the `etl-app` cont
     ```
 
 3. **Generate data:**
-Using the following command generate a dataset:
+Using the following command generate a dataset
     ```bash
     python3 generate.py
     ```
@@ -34,7 +34,7 @@ Using the following command generate a dataset:
 
 
 4. **Create table:**
-Using the following command connect to the psql:
+Connect to the PostgreSQL database using the psql command-line tool
     ```bash
     psql -h $DB_HOST -U $DB_USER -d $DB_NAME
     ```
@@ -46,10 +46,11 @@ Using the following command connect to the psql:
     ```
 
 5. **Run pyspark script:**
-    Quit the database using \q
-    Using the following command run the spark script:
+    Quit the database using \q.
+    Using the following command run the spark script
     ```bash
     spark-submit main.py
     ```
     After running it, transformed data will be loaded into the database.
-    To run other sql scripts - connect to the psql using the example above and experiment with data.
+    To run other sql scripts - connect to the PostgreSQL database using the psql command-line tool 
+    as shown in the example above and experiment with data.
