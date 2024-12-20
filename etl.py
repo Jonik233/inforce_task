@@ -41,23 +41,28 @@ def load():
     data_dir = os.environ['SAVE_DIR']
     csv_path = glob.glob(os.path.join(data_dir, 'part-00000*.csv')).pop()
     df = pd.read_csv(csv_path)
+    df["user_id"] = df.index + 1 # rearrangement of user id due to duplicates removal and shuffling
 
-    conn = psycopg2.connect(
-        dbname=os.environ['DB_NAME'],
-        user=os.environ['DB_USER'],
-        password=os.environ['DB_PASSWORD'],
-        host=os.environ['DB_HOST'],
-        port=os.environ['DB_PORT']
-    )
+    try:
+        connection = psycopg2.connect(
+            dbname=os.environ['DB_NAME'],
+            user=os.environ['DB_USER'],
+            password=os.environ['DB_PASSWORD'],
+            host=os.environ['DB_HOST'],
+            port=os.environ['DB_PORT']
+        )
 
-    cur = conn.cursor()
+    except Exception as e:
+        print("Can't stablish connection with the database")
+        print(e)
 
-    buffer = StringIO()
-    df.to_csv(buffer, header=False, index=False)
-    buffer.seek(0)
+    with connection.cursor() as cursor:
 
-    cur.copy_from(buffer, os.environ['TABLE'], sep=',')
-    conn.commit()
+        buffer = StringIO()
+        df.to_csv(buffer, header=False, index=False)
+        buffer.seek(0)
 
-    cur.close()
-    conn.close()
+        cursor.copy_from(buffer, os.environ['TABLE'], sep=',')
+        connection.commit()
+        
+    connection.close()
